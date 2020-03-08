@@ -9,6 +9,12 @@ html{
     font-size: 16px;
 }
 
+ul{
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
+
 body h1,h2{
     font-family: 'Poppins', sans-serif;
 }
@@ -33,7 +39,7 @@ h3,p{
     width:100vw;
     height:100vh;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 0.5fr 0.5fr 2fr 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 10px; 
@@ -43,7 +49,7 @@ h3,p{
 }
 
 #content .title{
-    grid-area: 1 / 1 / 2 / 4; 
+    grid-area: 1 / 1 / 2 / 5; 
     color: var(--content-text-color-primary); 
     animation-delay: 1s;
 }
@@ -53,26 +59,42 @@ h3,p{
 }
 
 #content .title_under{
-    grid-area: 2 / 2 / 3 / 3;
+    grid-area: 2 / 2 / 3 / 4;
     color: var(--content-text-color-secondary); 
     animation-delay: 2s;
 }
 
-#content .result_text{
-    grid-area: 3 / 2 / 4 / 3;
-    color: var(--content-text-color-highlight); 
-    font-size: 5rem;
+#content .result_list{
+    grid-area: 3 / 2 / 4 / 4;
     animation-delay: 4s;
 }
 
-#content .result_text_change{
-    grid-area: 4 / 2 / 5 / 3; 
+#content .result_text{
+    color: var(--content-text-color-highlight); 
+    font-size: 5rem;
+}
+
+#content .add_text{
+    grid-area: 4 / 2 / 5 / 4; 
     color: var(--content-text-color-secondary); 
     animation-delay: 6s;
 }
 
-#content .input_result{
-    grid-area: 5 / 2 / 6 / 3;
+.input_wrapper{
+    grid-area: 5 / 2 / 6 / 4;
+    display:flex;
+    justify-content: center;
+    
+}
+
+#content .input_wrapper .add_inputField{
+    grid-area: 5 / 2 / 6 / 4;
+    margin-bottom:10px;
+    animation-delay: 6s;
+}
+
+#content .input_wrapper .add_button{
+    grid-area: 5 / 3 / 6 / 5;
     margin-bottom:10px;
     animation-delay: 6s;
 }

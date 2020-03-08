@@ -11,9 +11,16 @@
     <div id="content">
         <h1 class="title animated fadeIn">De beste persoon is: </h1>
         <h3 class="title_under animated fadeIn"><span>tromgeroffel</span></h3>
-        <h2 class="result_text animated zoomIn">{{ message }}</h2>
-        <p class="result_text_change animated fadeIn">verander van gedachten</p>
-        <input class="input_result animated fadeIn" type ="text" id="input" v-model="message">
+        <ul class="result_list animated zoomIn">
+            <li v-for="name in names" v-text="name">
+                <h2 class="result_text"></h2>
+            </li>
+        </ul>      
+        <p class="add_text animated fadeIn">Voeg een naam toe</p>
+        <div class="input_wrapper">
+            <input class="add_inputField animated fadeIn" type ="text" v-model="newName"></input>
+            <button class="add_button animated fadeIn"@click="addName"><p>Add name</p></button>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
     <script>
@@ -21,7 +28,15 @@
         new Vue({          
             el: '#content',
             data: {
-                message: 'Emma'
+                newName: '',
+                names: ['Emma'],
+            },
+
+            methods: {
+                addName() {
+                    this.names.push(this.newName);
+                    this.newName = '';
+                }
             }
         })
     </script>
