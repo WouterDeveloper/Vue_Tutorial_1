@@ -34,7 +34,7 @@ h3,p{
     height:100vh;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr 0.5fr 2fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr 2fr 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 10px; 
     background: var(--content-bg-color); 
@@ -42,37 +42,20 @@ h3,p{
     align-items: center;
 }
 
-#content span, .title, .title_under, .result_text, .change_result_text, .input_result{
-    /* animation-iteration-count: 1;
-    display:none; */
-    /* font-size:0rem;
-    animation: 1s ease-out 0s 1 display; */
-    /* -webkit-animation: fadeInFromNone 0.5s ease-out;
-    -moz-animation: fadeInFromNone 0.5s ease-out;
-    -o-animation: fadeInFromNone 0.5s ease-out;
-    animation: fadeInFromNone 0.5s ease-out; */
-    animation-fill-mode: both;
-    animation: 1s ease-out 0s 1 slideInFromLeft;
-  
-}
-
 #content .title{
     grid-area: 1 / 1 / 2 / 4; 
     color: var(--content-text-color-primary); 
     animation-delay: 1s;
-    animation-fill-mode: both;
 }
 
 #content span{
     font-style:italic;
-    animation-delay: 2s;
-    animation-fill-mode: both;
 }
 
 #content .title_under{
     grid-area: 2 / 2 / 3 / 3;
     color: var(--content-text-color-secondary); 
-    animation-delay: 3s;
+    animation-delay: 2s;
 }
 
 #content .result_text{
@@ -82,7 +65,7 @@ h3,p{
     animation-delay: 4s;
 }
 
-#content .change_result_text{
+#content .result_text_change{
     grid-area: 4 / 2 / 5 / 3; 
     color: var(--content-text-color-secondary); 
     animation-delay: 6s;
@@ -92,71 +75,4 @@ h3,p{
     grid-area: 5 / 2 / 6 / 3;
     margin-bottom:10px;
     animation-delay: 6s;
-}
-
-@keyframes slideInFromLeft {
-    0% {
-        transform: translateX(-300%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-
-@keyframes display {
-    0% {
-      font-size: 0rem;
-    }
-    100% {
-        font-size: 1rem;
-    }
-  }
-
-  @-webkit-keyframes fadeInFromNone {
-    0% {
-        display: none;
-        opacity: 0;
-    }
-
-    100% {
-        display: block;
-        opacity: 1;
-    }
-}
-
-@-moz-keyframes fadeInFromNone {
-    0% {
-        display: none;
-        opacity: 0;
-    }
-
-    100% {
-        display: block;
-        opacity: 1;
-    }
-}
-
-@-o-keyframes fadeInFromNone {
-    0% {
-        display: none;
-        opacity: 0;
-    }
-
-    100% {
-        display: block;
-        opacity: 1;
-    }
-}
-
-@keyframes fadeInFromNone {
-    0% {
-        display: none;
-        opacity: 0;
-    }
-
-
-    100% {
-        display: block;
-        opacity: 1;
-    }
 }

@@ -4,19 +4,21 @@
     <title> First Vue Tutorial </title>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssnormalize/cssnormalize-min.css"> 
     <link rel="stylesheet" type="text/css" href="style.css"> 
+    <link rel="stylesheet" type="text/css" href="animate.css"> 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <div id="content">
-        <h1 class="title">De beste persoon is: </h1>
-        <h3 class="title_under"><span>tromgeroffel</span></h3>
-        <h2 class="result_text">{{ message }}</h2>
-        <p class="change_result_text">verander van gedachten</p>
-        <input class="input_result" type ="text" id="input" v-model="message">
+        <h1 class="title animated fadeIn">De beste persoon is: </h1>
+        <h3 class="title_under animated fadeIn"><span>tromgeroffel</span></h3>
+        <h2 class="result_text animated zoomIn">{{ message }}</h2>
+        <p class="result_text_change animated fadeIn">verander van gedachten</p>
+        <input class="input_result animated fadeIn" type ="text" id="input" v-model="message">
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
     <script>
-        new Vue({
+        Vue.config.devtools = true,
+        new Vue({          
             el: '#content',
             data: {
                 message: 'Emma'
