@@ -69,6 +69,14 @@ h3,p{
     animation-delay: 4s;
 }
 
+#content .result_list li{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #3e3e3e;
+    word-break: break-all;
+}
+
 #content .result_text{
     color: var(--content-text-color-highlight); 
     font-size: 5rem;

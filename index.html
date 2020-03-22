@@ -4,22 +4,24 @@
     <title> First Vue Tutorial </title>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssnormalize/cssnormalize-min.css"> 
     <link rel="stylesheet" type="text/css" href="style.css"> 
-    <link rel="stylesheet" type="text/css" href="animate.css"> 
+    <!-- <link rel="stylesheet" type="text/css" href="animate.css">  -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <div id="content">
-        <h1 class="title animated fadeIn">De beste persoon is: </h1>
+        <h1 class="title animated fadeIn">Mijn notities: </h1>
         <h3 class="title_under animated fadeIn"><span>tromgeroffel</span></h3>
         <ul class="result_list animated zoomIn">
-            <li v-for="name in names" v-text="name">
-                <h2 class="result_text"></h2>
-            </li>
-        </ul>      
-        <p class="add_text animated fadeIn">Voeg een naam toe</p>
+            <li v-for="(note, index) in notes" :key="note.index">
+                <h2 class="result_text" @click="showFullNote" v-if="fullNote && note.content.length>8">{{ note.content.slice(0, 8)+"..." }}</h2>             
+                <h2 class="result_text" @click="showFullNote" v-else>{{ note.content }}</h2>             
+                <button class="delete_button" @click="deleteNote(index)"></button> 
+            </li>        
+        </ul>     
+        <p class="add_text animated fadeIn">Voeg een notitie toe</p>
         <div class="input_wrapper">
-            <input class="add_inputField animated fadeIn" type ="text" v-model="newName"></input>
-            <button class="add_button animated fadeIn"@click="addName"><p>Add name</p></button>
+            <input class="add_inputField animated fadeIn" type ="text" v-model="newNote" :disabled="!buttonEnabled"></input>
+            <button class="add_button animated fadeIn" @click="disableButton" :disabled="!buttonEnabled"><p>Add note</p></button>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
@@ -28,17 +30,41 @@
         new Vue({          
             el: '#content',
             data: {
-                newName: '',
-                names: ['Emma'],
+                newNote: '',
+                notes: [
+                    {content: 'Emma' },
+                    {content: 'Sjoef' },
+                    {content: 'Schnitzel' },
+                ],
+                buttonEnabled: true,
+                fullNote: true,
+                return (){
+                    notes: []
+                },
             },
-
             methods: {
-                addName() {
-                    this.names.push(this.newName);
-                    this.newName = '';
-                }
+                addNote() {
+                    this.notes.push(this.newNote);
+                    this.newNote = '';
+                },
+                deleteNote(index) {
+                    Vue.delete(this.notes, index);
+                },
+                disableButton(){
+                    if(persons.length > 2){
+                        buttonEnabled = true;
+                    }
+                },
+                showFullNote(){
+                    this.fullNote = !this.fullNote;
+                },
             }
         })
+        
+// <h2 class="result_text" v-if="person.name.length<8">{{ person.name }}</h2>
+//                 <h2 class="result_text" v-else @click="showFullName">{{ person.name.substring(0,8)+"..." }}</h2>
+//                 <button class="delete_button" @click="deleteName(index)"></button> 
+
     </script>
 </body>
 </html>
