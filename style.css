@@ -31,7 +31,11 @@ h2{
     font-size:1rem;
 }
 
-h3,p{
+h3{
+    font-size:1.2rem;
+}
+
+p{
     font-size:0.8rem;
 }
 
@@ -64,9 +68,12 @@ h3,p{
     animation-delay: 2s;
 }
 
-#content .result_list{
-    grid-area: 3 / 2 / 4 / 4;
-    animation-delay: 4s;
+#content .incomplete{
+    grid-area: 3 / 2 / 4 / 3;
+}
+
+#content .complete{
+    grid-area: 3 / 3 / 4 / 4;
 }
 
 #content .result_list li{
@@ -79,7 +86,6 @@ h3,p{
 
 #content .result_text{
     color: var(--content-text-color-highlight); 
-    font-size: 5rem;
 }
 
 #content .add_text{
