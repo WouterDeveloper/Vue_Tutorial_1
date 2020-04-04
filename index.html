@@ -3,117 +3,35 @@
 <head>
     <title> First Vue Tutorial </title>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssnormalize/cssnormalize-min.css"> 
-    <link rel="stylesheet" type="text/css" href="style.css"> 
-    <!-- <link rel="stylesheet" type="text/css" href="animate.css">  -->
+    <link rel="stylesheet" type="text/css" href="assets/style/style.css"> 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins&display=swap" rel="stylesheet"> 
 </head>
-<body>
-    <div id="content">
-        <div class="logo"></div>
-        <h1 class="title">Mijn to do's: </h1>      
-        <ul class="result_list incomplete">
-            <header>
-                <h2 class="title animated fadeIn"><span>Nog niet gecomplete</span></h2>
-                <button class="filter_complete"></button>
-                <div class="filter_score"></div>
+<body> 
+    <header class="header">           
+        <div class="header__logo"></div>       
+        <h1 class="header__title">Mijn to do's: </h1>  
+    </header>
+    <article class="content">
+        <ul class="content__list incomplete">
+            <header class="content__header">
+                <h2 class="content__header_title"><span>Nog niet gecomplete</span></h2>
+                <button class="content__header_filter--toggle-complete"></button>
+                <div class="content__header_filter--toggle-complete"></div>
             </header>
-            <li v-for="(Task, index) in incompleteTasks" :key="Task.index">
-                <h3 class="result_text" @click="showFullTask" v-if="fullTask && Task.description.length>8">{{ Task.description.slice(0, 25)+"..." }}</h3>             
-                <h3 class="result_text" @click="showFullTask" v-else>{{ Task.description }}</h3>             
-                <button class="complete_button" @click="Task.completed = ! Task.completed"></button>
-                <button class="delete_button" @click="deleteTask(index)"></button>  
+            <li class="content__item" v-for="(Task, index) in incompleteTasks" :key="Task.index">
+                <h3 class="content__item_text" @click="showFullTask" v-if="fullTask && Task.description.length>8">{{ Task.description.slice(0, 25)+"..." }}</h3>             
+                <h3 class="content__item_text" @click="showFullTask" v-else>{{ Task.description }}</h3>             
+                <button class="content__item_button" @click="Task.completed = ! Task.completed"></button>
+                <button class="content__item_button" @click="deleteTask(index)"></button>  
             </li>     
-            <div class="input_wrapper">
-                <input class="add_inputField animated fadeIn" type ="text" v-model="newTask" :disabled="!buttonEnabled"></input>
-                <button class="add_button animated fadeIn" @click="addTask"><p>Add Task</p></button>
-            </div>   
-        </ul>     
-        <!-- <ul class="result_list complete">
-            <h2 class="title animated fadeIn"><span>Complete</span></h2>
-            <li v-for="(Task, index) in completeTasks" :key="Task.index">
-                <h3 class="result_text" @click="showFullTask" v-if="fullTask && Task.description.length>8">{{ Task.description.slice(0, 8)+"..." }}</h3>             
-                <h3 class="result_text" @click="showFullTask" v-else>{{ Task.description }}</h3>             
-                <button class="complete_button" @click="Task.completed = ! Task.completed"></button> 
-                <button class="delete_button" @click="deleteTask(index)"></button> 
-            </li>
-        </ul>    -->
-    </div>
+            <footer class="content__input">
+                <div class="content__input_text">Voeg taak toe</div>
+                <input class="content__input_field" type ="text" v-model="newTask" :disabled="!buttonEnabled"></input>
+                <button class="content__input_button" @click="addTask"><p>Add Task</p></button>
+            </footer>   
+        </ul>    
+    </article>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
-    <script>
-        Vue.config.devtools = true,
-        new Vue({          
-            el: '#content',
-            data: {
-                newTask: '',
-                tasks: [
-                    {description: 'Groenten snijden', completed: true  },
-                    {description: 'Koken', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                    {description: 'Fijne avond met emma', completed: false },
-                ],
-                buttonEnabled: true,
-                fullTask: true,
-                return (){
-                    tasks: []
-                },
-            },
-            computed: {
-                incompleteTasks(){
-                    return this.tasks.filter(task => ! task.completed);
-                },
-                completeTasks(){
-                    return this.tasks.filter(task => task.completed);
-                }
-            },
-            methods: {
-                addTask() {
-                    this.tasks.push(this.newTask);
-                    this.newTask = '';
-                },
-                completeTask(index) { 
-                    Vue.set(this.task, 'completed', true)            
-                },
-                deleteTask(index) { 
-                    Vue.delete(this.notes, index);
-                },
-                showFullTask(){
-                    this.fullTask = !this.fullTask;
-                },
-            }
-        })
-        
-// <h2 class="result_text" v-if="person.name.length<8">{{ person.name }}</h2>
-//                 <h2 class="result_text" v-else @click="showFullName">{{ person.name.substring(0,8)+"..." }}</h2>
-//                 <button class="delete_button" @click="deleteName(index)"></button> 
-
-    </script>
+    <script src="assets/js/app.js"></script>
 </body>
 </html>
