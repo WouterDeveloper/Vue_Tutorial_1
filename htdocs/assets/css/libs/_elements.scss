@@ -1,0 +1,51 @@
+
+html, body{
+    width:100vw;
+    height:100vh;   
+    display: grid;
+    grid-template-columns: 0.5fr repeat(10, 1fr) 0.5fr;
+    font-size: 16px;
+    background: $main-bg-color;
+}
+
+ul{
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
+
+h1,h2{
+    font-family: 'Poppins', sans-serif;
+}
+
+h3,p{
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1{
+    font-size: 2rem;
+}
+
+h2{
+    font-size:1.5rem;
+}
+
+h3{
+    font-size:1.2rem;
+}
+
+p{
+    font-size:0.8rem;
+}
+
+#app{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    min-height:90vh;
+    // grid-row-gap: 2vh;
+    // grid-column-gap: 1vw;
+    grid-column:2 / 12;
+    background: $content-bg-color; 
+}
+
+

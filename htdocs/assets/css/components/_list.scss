@@ -1,0 +1,38 @@
+&__list{
+    border-radius:5px;
+    grid-column: 2 / 12;
+    padding: 0px 5%;
+
+    &__item{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        word-break: break-all;
+
+        &_text{
+            color: $content-text-color-highlight; 
+            margin-right: auto;
+        }
+    }
+
+    &__input{
+        display:flex;
+        justify-content: space-around;
+        align-items:center;
+
+        &_text{
+            color: $content-text-color-secondary; 
+        }
+        &_field{
+            margin-bottom: 0vh;
+            margin-left: 1vw;
+        }  
+        
+        &_button{
+            margin-left:auto;
+        }
+        
+    }
+}
+
+

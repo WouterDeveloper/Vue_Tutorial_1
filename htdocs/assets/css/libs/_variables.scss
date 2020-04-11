@@ -1,0 +1,32 @@
+// Colors
+$main-bg-color:#ffffff;
+$content-bg-color: #f3f3f3;
+$content-text-color-primary: #393939;
+$content-text-color-secondary: #8c8c8c;
+$content-text-color-highlight: #fcba03;
+
+
+// Fonts
+$font-primary:  'Poppins', sans-serif;
+$font-secondary:   'Open Sans', sans-serif; 
+$font-color-primary: #393939;
+$font-color-secondary: #ffffff;
+
+// Spacings
+$spacing-xs:                     8px;
+$spacing-sm:                     16px;
+$spacing-md:                     32px;
+$spacing-lg:                     48px;
+$spacing-xl:                     64px;
+$spacing-xxl:                    128px;
+
+// Media Queries
+$breakpoint-sm:                 480px;
+$breakpoint-md:                 768px;
+$breakpoint-lg:                 960px;
+$breakpoint-xl:                 1280px;
+$breakpoint-xxl:                1440px;
+$breakpoint-xxxl:               1920px;
+
+// Grid
+$gutter:                        $spacing-sm;
