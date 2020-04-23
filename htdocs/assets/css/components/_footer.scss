@@ -1,0 +1,19 @@
+.input{
+    // display:flex;
+    // justify-content: space-around;
+    // align-items:center;
+    grid-area:ft;
+    background-color:$content-bg-color-light;
+
+    &_text{
+        color: $content-text-color-secondary; 
+    }
+    &_field{
+        margin-bottom: 0vh;
+        margin-left: 1vw;
+    }  
+    
+    &_button{
+        margin-left:auto;
+    }
+}

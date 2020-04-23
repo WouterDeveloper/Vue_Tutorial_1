@@ -1,6 +1,6 @@
 Vue.config.devtools = true,
 new Vue({          
-    el: '.content',
+    el: '#app',
     data: {
         newTask: '',
         tasks: [

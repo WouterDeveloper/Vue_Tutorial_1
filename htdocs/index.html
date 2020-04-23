@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> First Vue Tutorial </title>
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssnormalize/cssnormalize-min.css"> 
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins&display=swap" rel="stylesheet"> 
+</head>
+<body> 
+    <main id="app"> 
+        <nav class="nav">           
+            <div class="nav__logo">Logo</div>    
+            <div class="nav__button">Home</div>   
+            <div class="nav__button">Stat </div>  
+        </nav>
+        <header class="header">
+            <h2 class="header__title"><span>Nog niet gecomplete</span></h2>
+            <button class="header__filter--toggle-complete"></button>
+            <div class="header__filter--toggle-complete"></div>
+        </header>
+        <ul class="list incomplete">
+            <li class="item" v-for="(Task, index) in incompleteTasks" :key="Task.index">
+                <h3 class="item__text" @click="showFullTask" v-if="fullTask && Task.description.length>8">{{ Task.description.slice(0, 25)+"..." }}</h3>             
+                <h3 class="item__text" @click="showFullTask" v-else>{{ Task.description }}</h3>             
+                <button class="item__button" @click="Task.completed = ! Task.completed"></button>
+                <button class="item__button" @click="deleteTask(index)"></button>  
+            </li>      
+        </ul>    
+        <footer class="input">
+            <div class="input__text">Voeg taak toe</div>
+            <input class="input__field" type ="text" v-model="newTask" :disabled="!buttonEnabled"></input>
+            <button class="input__button" @click="addTask"><p>Add Task</p></button>
+        </footer>  
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
